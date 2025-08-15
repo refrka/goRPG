@@ -1,0 +1,35 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://tk08ur6f6tgu"
+path="res://.godot/imported/mac's Minecraft Bold Italic.woff2-9a8e2477b0dae2f29326af7cd8db2c88.fontdata"
+
+[deps]
+
+source_file="res://resources/mac's minecraft/mac's Minecraft Bold Italic.woff2"
+dest_files=["res://.godot/imported/mac's Minecraft Bold Italic.woff2-9a8e2477b0dae2f29326af7cd8db2c88.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2dgyntga7nd5"]
+
+[ext_resource type="Script" uid="uid://dn3ykoutfxems" path="res://main/main_menu.gd" id="1_4l7av"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4l7av")
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Game"
+
+[node name="NewGameMenu" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewGameMenu"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameMenu/HBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Name:"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="NameEntry" type="LineEdit" parent="NewGameMenu/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 4
+max_length = 15
+caret_blink = true
+
+[node name="CreateGameButton" type="Button" parent="NewGameMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create Game"

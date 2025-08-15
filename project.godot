@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="New Game ProjectgoRPG"
+run/main_scene="uid://dcf0l46qq0jqa"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*res://autoloads/Signals.gd"
+Debug="*res://autoloads/Debug.gd"
+Enums="*res://autoloads/Enums.gd"
+SceneHandler="*res://autoloads/SceneHandler.gd"
+Reference="*res://autoloads/Reference.gd"
+SaveHandler="*res://autoloads/SaveHandler.gd"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom="uid://bv8ucnas201py"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

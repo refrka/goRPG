@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bv8ucnas201py"]
+
+[ext_resource type="FontFile" uid="uid://bmqwpchqi74wh" path="res://resources/mac's minecraft/mac's Minecraft.ttf" id="1_ntlge"]
+[ext_resource type="FontFile" uid="uid://dfpexwy2g7pno" path="res://resources/mac's minecraft/mac's Minecraft Bold.ttf" id="1_oitfk"]
+[ext_resource type="FontFile" uid="uid://33snc5wxviog" path="res://resources/mac's minecraft/mac's Minecraft Bold Italic.ttf" id="2_lyffh"]
+[ext_resource type="FontFile" uid="uid://bk2mfdtwixa0r" path="res://resources/mac's minecraft/mac's Minecraft Italic.ttf" id="3_jqkxy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyffh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oitfk"]
+
+[resource]
+default_font = ExtResource("1_ntlge")
+default_font_size = 4
+Button/styles/focus = SubResource("StyleBoxEmpty_lyffh")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_oitfk")
+RichTextLabel/fonts/bold_font = ExtResource("1_oitfk")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_lyffh")
+RichTextLabel/fonts/italics_font = ExtResource("3_jqkxy")
