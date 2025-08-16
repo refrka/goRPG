@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cqx7g4sp4w6s"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+bbcode_enabled = true
+text = ">"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="SaveName" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "X"

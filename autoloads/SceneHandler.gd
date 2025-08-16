@@ -52,4 +52,3 @@ func validate_root(node: Root) -> bool:
 	else:
 		return true
 	
-

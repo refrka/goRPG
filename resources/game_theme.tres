@@ -1,18 +1,52 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bv8ucnas201py"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bv8ucnas201py"]
 
 [ext_resource type="FontFile" uid="uid://bmqwpchqi74wh" path="res://resources/mac's minecraft/mac's Minecraft.ttf" id="1_ntlge"]
 [ext_resource type="FontFile" uid="uid://dfpexwy2g7pno" path="res://resources/mac's minecraft/mac's Minecraft Bold.ttf" id="1_oitfk"]
 [ext_resource type="FontFile" uid="uid://33snc5wxviog" path="res://resources/mac's minecraft/mac's Minecraft Bold Italic.ttf" id="2_lyffh"]
 [ext_resource type="FontFile" uid="uid://bk2mfdtwixa0r" path="res://resources/mac's minecraft/mac's Minecraft Italic.ttf" id="3_jqkxy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyixa"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.105882, 0.6, 1)
+draw_center = false
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyffh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyffh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oitfk"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.099986, 0.099986, 0.0999859, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqkxy"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oitfk"]
 
 [resource]
 default_font = ExtResource("1_ntlge")
 default_font_size = 4
+Button/colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 0.780392)
+Button/styles/disabled = SubResource("StyleBoxFlat_pyixa")
 Button/styles/focus = SubResource("StyleBoxEmpty_lyffh")
+Button/styles/hover = SubResource("StyleBoxFlat_lyffh")
+Button/styles/normal = SubResource("StyleBoxFlat_oitfk")
+Button/styles/pressed = SubResource("StyleBoxFlat_jqkxy")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_oitfk")
 RichTextLabel/fonts/bold_font = ExtResource("1_oitfk")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_lyffh")

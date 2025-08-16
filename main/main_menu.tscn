@@ -9,53 +9,93 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_4l7av")
 
-[node name="MainMenu" type="VBoxContainer" parent="."]
+[node name="BackButtonNode" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 50.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="BackButton" type="Button" parent="BackButtonNode"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
+[node name="MainMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NewGameButton" type="Button" parent="MainMenu"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "New Game"
-
-[node name="LoadGameButton" type="Button" parent="MainMenu"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Load Game"
-
-[node name="NewGameMenu" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NewGameMenu"]
+[node name="NewGameButton" type="Button" parent="MainMenu/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+text = "New Game"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NewGameMenu/HBoxContainer"]
+[node name="LoadGameButton" type="Button" parent="MainMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Load Game"
+
+[node name="NewGameMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGameMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -53.0
+offset_right = 61.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewGameMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Name:"
@@ -63,7 +103,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="NameEntry" type="LineEdit" parent="NewGameMenu/HBoxContainer"]
+[node name="NameEntry" type="LineEdit" parent="NewGameMenu/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
@@ -71,7 +111,103 @@ size_flags_vertical = 4
 max_length = 15
 caret_blink = true
 
-[node name="CreateGameButton" type="Button" parent="NewGameMenu"]
+[node name="CreateGameButton" type="Button" parent="NewGameMenu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Create Game"
+
+[node name="NameEntryError" type="RichTextLabel" parent="NewGameMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
+[node name="LoadGameMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadGameMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="SaveList" type="VBoxContainer" parent="LoadGameMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadGameMenu/MarginContainer/VBoxContainer/SaveList"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Current saves:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Button" type="Button" parent="LoadGameMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="DeleteSaveMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DeleteSaveMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -46.0
+offset_right = 106.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeleteSaveMenu/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DeleteLabel" type="RichTextLabel" parent="DeleteSaveMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Are you sure you want to delete the save '%s'?"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="DeleteButton" type="Button" parent="DeleteSaveMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Confirm delete"

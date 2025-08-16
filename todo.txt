@@ -1,0 +1,11 @@
+== Main Menu / SaveHandling ==
+(1) Limit the number of saves to a reasonable number
+(2) Make the LoadGameMenu save labels selectable
+(3) LoadGameMenu load button should be disableed if no save is selected
+(4) Add more conditons to validate_save
+    [a] illegal characters
+    [b] ?
+(5) Add buttons to delete saves
+
+-> NEXT
+Figure out problem with true/false save delete validation
