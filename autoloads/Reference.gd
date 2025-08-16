@@ -1,7 +1,7 @@
 extends Node
 
 const GAME_NAME:= "goRPG"
-const SAVE_COUNT_MAX = 5
+const SAVE_COUNT_MAX = 3
 const SceneKey = Enums.SceneKey
 
 var scene_ref = {
