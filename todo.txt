@@ -1,8 +1,15 @@
-== Main Menu / SaveHandling ==
-(x) Limit the number of saves to a reasonable number
-(x) Make the LoadGameMenu save labels selectable
-(x) LoadGameMenu load button should be disabled if no save is selected
+
 (4) Add more conditons to validate_save
     [a] illegal characters
     [b] ?
 ( ) Prompt user to save before quitting
+( ) Connect debug error log to an input
+
+== Settings ==
+( ) Volume
+( ) Keybinds
+
+== Audio ==
+( ) AudioHandler.gd
+	> pulls from Enums.AudioKeys and creates audio streams where necessary
+

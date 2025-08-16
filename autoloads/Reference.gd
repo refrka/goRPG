@@ -13,6 +13,10 @@ var scene_ref = {
 		"path": "res://main/main_game.tscn",
 		"name": "Main Game"
 	},
+	SceneKey.PLAYER_PROFILE: {
+		"path": "res://player/player_profile.tscn",
+		"name": "Player Profile"
+	},
 }
 
 func get_scene_path(key: SceneKey) -> String:

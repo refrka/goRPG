@@ -13,4 +13,5 @@ enum ErrorKey {
 enum SceneKey {
 	MAIN_MENU,
 	MAIN_GAME,
+	PLAYER_PROFILE,
 }

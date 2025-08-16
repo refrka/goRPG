@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bv8ucnas201py"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bv8ucnas201py"]
 
 [ext_resource type="FontFile" uid="uid://bmqwpchqi74wh" path="res://resources/mac's minecraft/mac's Minecraft.ttf" id="1_ntlge"]
 [ext_resource type="FontFile" uid="uid://dfpexwy2g7pno" path="res://resources/mac's minecraft/mac's Minecraft Bold.ttf" id="1_oitfk"]
@@ -50,6 +50,14 @@ border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyjye"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvm15"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0962047, 0.0962048, 0.0962046, 1)
+
 [resource]
 default_font = ExtResource("1_ntlge")
 default_font_size = 4
@@ -62,6 +70,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_jqkxy")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_oitfk")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_5c6gk")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_kyjye")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_gvm15")
 RichTextLabel/fonts/bold_font = ExtResource("1_oitfk")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_lyffh")
 RichTextLabel/fonts/italics_font = ExtResource("3_jqkxy")
