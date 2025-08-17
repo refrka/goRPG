@@ -2,8 +2,6 @@
 (4) Add more conditons to validate_save
     [a] illegal characters
     [b] ?
-( ) Prompt user to save before quitting
-( ) Connect debug error log to an input
 
 == Settings ==
 ( ) Volume

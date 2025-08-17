@@ -5,6 +5,13 @@ var main_game_root: SceneHandler.Root
 func _ready() -> void:
 	main_game_root = SceneHandler.add_root(self)
 	_connect_signals()
+	_connect_buttons()
+	gui_input.connect(_select_bg)
+
+func _connect_signals() -> void:
+	Signals.PLAYER_profile_closed.connect(func():%MenuButton.visible = true)
+
+func _connect_buttons() -> void:
 	%MenuList.visible = false
 	%QuitConfirm.visible = false
 	%MenuButton.pressed.connect(_show_game_menu)
@@ -13,10 +20,6 @@ func _ready() -> void:
 	%MenuQuitButton.pressed.connect(_quit_game)
 	%QuitSaveButton.pressed.connect(_save_game)
 	%QuitQuitButton.pressed.connect(_quit_game.bind(true))
-	gui_input.connect(_select_bg)
-
-func _connect_signals() -> void:
-	Signals.PLAYER_profile_closed.connect(func():%MenuButton.visible = true)
 
 func _hide_game_menu() -> void:
 	if %MenuButton.pressed.is_connected(_hide_game_menu):
@@ -35,7 +38,7 @@ func _open_profile() -> void:
 
 func _quit_game(_confirmed:=false) -> void:
 	if !_confirmed:
-		%QuitConfirm.visible = true
+		%QuitConfirm.visible = !%QuitConfirm.visible
 		return
 	queue_free()
 	Signals.GAME_quit.emit()

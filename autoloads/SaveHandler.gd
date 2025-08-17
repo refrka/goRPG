@@ -12,6 +12,7 @@ var save_list: Array:
 		if _validate_save_dir():
 			var _dir = DirAccess.open(save_path)
 			for file in _dir.get_files():
+				var _save_file = PlayerData.new()
 				var save_file = ConfigFile.new()
 				save_file.load(save_path + file)
 				save_list.append(save_file)
@@ -28,7 +29,7 @@ func create_save(_name: String) -> ConfigFile:
 	active_save = ConfigFile.new()
 	if !_validate_save_dir():
 		if !_create_save_dir():
-			Debug.log_error(Enums.ErrorKey.SAVE_DIR)
+			Debug.log_error(Enums.ErrorKey.SAVE_DIR_CREATE)
 			return
 	_set_initial_save_values(_name)
 	active_save.save(save_path + _name + ".ini")
@@ -37,13 +38,14 @@ func create_save(_name: String) -> ConfigFile:
 func delete_save(_save: ConfigFile) -> bool:
 	var save_name = _save.get_value("Player", "name")
 	var _save_path = save_path + save_name + ".ini"
-	var delete: bool
+	var delete_error:= false
+	if !_validate_save_dir():
+		return false
 	if !dir.file_exists(_save_path):
-		delete = false
+		delete_error = true
 	else:
 		dir.remove(_save_path)
-		delete = true
-	if delete == false:
+	if delete_error == true:
 		Debug.log_error(Enums.ErrorKey.SAVE_DELETE)
 		return false
 	else:
@@ -52,20 +54,12 @@ func delete_save(_save: ConfigFile) -> bool:
 func get_save_value(section: String, key: String) -> Variant:
 	return active_save.get_value(section, key)
 
-func load_save(_name: String) -> void:
-	for _save in save_list:
-		var save_name = _save.get_value("Player", "name")
-		if save_name == _name:
-			active_save = _save
-
 func save() -> void:
 	var save_name = active_save.get_value("Player", "name")
 	if !validate_save(save_name):
 		Debug.log_error(Enums.ErrorKey.SAVE_MISSING)
 		return
 	var _save_path = save_path + save_name + ".ini"
-	if !_validate_save_dir():
-		Debug.log_error(Enums.ErrorKey.SAVE_DIR)
 	dir.remove(_save_path)
 	active_save.save(_save_path)
 
@@ -101,5 +95,8 @@ func _set_initial_save_values(_name: String) -> void:
 	active_save.set_value("Player", "name", _name)
 
 func _validate_save_dir() -> bool:
-	return dir.dir_exists(save_dir)
+	if !dir.dir_exists(save_dir):
+		Debug.log_error(Enums.ErrorKey.SAVE_DIR)
+		return false
+	return true
 	

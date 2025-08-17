@@ -4,10 +4,15 @@ enum ErrorKey {
 	GAME_START,
 	SAVE_DELETE,
 	SAVE_DIR,
+	SAVE_DIR_CREATE,
 	SAVE_MISSING,
 	SCENE_DUPLICATE,
 	SCENE_PATH,
 	SCENE_ROOT,
+}
+
+enum InputKey {
+
 }
 
 enum SceneKey {

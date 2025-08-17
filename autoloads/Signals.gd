@@ -9,4 +9,11 @@ signal GAME_started(game: Node) # at end if game.gd _ready()
 signal GAME_save_loaded(save_file: ConfigFile) # upon successful load of a save
 signal GAME_update_save(section: String, key: String, value: Variant) # in many places
 
+signal INPUT_mouse_left(state: bool) # when the left mouse button is pressed or released
+signal INPUT_mouse_right(state: bool) # when the right mouse button is pressed or released
+signal INPUT_key_up
+signal INPUT_key_down
+signal INPUT_key_left
+signal INPUT_key_right
+
 signal PLAYER_profile_closed # when the profile closes

@@ -1,10 +1,11 @@
 extends Control
 
-var new_game: NewGame
+var new_game: NewGameModel
 var save_row = preload("res://main/save_row.tscn")
-var selected_row: PanelContainer
+var save_index:= {}
 
-class NewGame:
+# Model for the new game creation input
+class NewGameModel:
 	var name: String:
 		set(value):
 			if _validate_name(value):
@@ -31,17 +32,20 @@ class NewGame:
 
 func _ready() -> void:
 	name = "MainMenu"
-	new_game = NewGame.new(%NameEntry, %NameEntryError, %CreateGameButton)
+	new_game = NewGameModel.new(%NameEntry, %NameEntryError, %CreateGameButton)
 	_connect_signals()
+	_connect_buttons()
 	_show(%MainMenu)
 
 func _connect_signals() -> void:
+	Signals.GAME_quit.connect(_show.bind(%MainMenu))
+
+func _connect_buttons() -> void:
 	%NewGameButton.pressed.connect(_new_game)
 	%LoadGameButton.pressed.connect(_load_game)
 	%NameEntry.text_submitted.connect(_on_name_submitted)
 	%CreateGameButton.pressed.connect(func():%NameEntry.text_submitted.emit(%NameEntry.text))
 	%BackButton.pressed.connect(_main_menu)
-	Signals.GAME_quit.connect(_show.bind(%MainMenu))
 		
 func _create_save_row(save: ConfigFile) -> PanelContainer:
 	var row = save_row.instantiate()
@@ -59,31 +63,32 @@ func _delete_menu(row: PanelContainer, save: ConfigFile) -> void:
 	%DeleteButton.pressed.connect(_delete_save.bind(row, save))
 	_show(%DeleteSaveMenu)
 
-func _delete_save(row: PanelContainer, save: ConfigFile) -> void:
+func _delete_save(index: int, save: ConfigFile) -> void:
 	var save_name = save.get_value("Player", "name")
 	if !SaveHandler.validate_save(save_name):
 		Debug.log_error(Enums.ErrorKey.SAVE_MISSING)
 		return
 	if SaveHandler.delete_save(save):
-		row.queue_free()
+		%ItemList.remove_item(index)
 		%DeleteLabel.text = "Save deleted"
 		%DeleteButton.visible = false
 		%DeleteButton.pressed.disconnect(_delete_save)
 
 func _load_game() -> void:
 	%LoadSaveButton.disabled = true
+	%DeleteSaveButton.disabled = true
 	_show(%LoadGameMenu)
 	if SaveHandler.save_list.size() == 0:
 		%LoadGameLabel.text = "No saves."
 		%LoadSaveButton.disabled = true
 	else:
 		%LoadGameLabel.text = "Current saves:"
-		for child in %SaveList.get_children():
-			if child != %LoadGameLabel:
-				%SaveList.remove_child(child)
+		%ItemList.clear()
 		for save in SaveHandler.save_list:
-			var hbox = _create_save_row(save)
-			%SaveList.add_child(hbox)
+			# var hbox = _create_save_row(save)
+			save_index[save] = %ItemList.add_item(save.get_value("Player", "name"))
+			%ItemList.set_item_tooltip_enabled(save_index[save], false)
+		# %ItemList.item_selected.connect(_save_row_selected)
 
 func _load_save(save: ConfigFile) -> void:
 	Signals.GAME_save_loaded.emit(save)
@@ -116,22 +121,16 @@ func _on_name_submitted(_name: String) -> void:
 		Signals.GAME_save_loaded.emit(new_save)
 	visible = false
 	
-func _save_row_selected(input: InputEvent, row: PanelContainer, save: ConfigFile) -> void:
-	if input.is_action_pressed("select"):
-		if %LoadSaveButton.pressed.has_connections():
-			%LoadSaveButton.pressed.disconnect(_load_save)
-		%LoadSaveButton.disabled = false
-		%LoadSaveButton.pressed.connect(_load_save.bind(save))
-		selected_row = row
-		for _save_row in %SaveList.get_children():
-			if _save_row != row:
-				var _stylebox = _save_row.get_theme_stylebox("panel").duplicate()
-				_stylebox.draw_center = false
-				_save_row.add_theme_stylebox_override("panel", _stylebox)
-
-		var stylebox = row.get_theme_stylebox("panel").duplicate()
-		stylebox.draw_center = true
-		row.add_theme_stylebox_override("panel", stylebox)
+func _save_row_selected(index: int) -> void:
+	var selected_save = save_index.find_key(index)
+	if %LoadSaveButton.pressed.has_connections():
+		%LoadSaveButton.pressed.disconnect(_load_save)
+	%LoadSaveButton.disabled = false
+	if %DeleteSaveButton.pressed.has_connections():
+		%LoadSaveButton.pressed.disconnect(_delete_save)
+	%DeleteSaveButton.disabled = false
+	%LoadSaveButton.pressed.connect(_load_save.bind(selected_save))
+	%DeleteSaveButton.pressed.connect(_delete_save.bind(index, selected_save))
 
 func _show(menu: Node) -> void:
 	visible = true

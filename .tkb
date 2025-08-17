@@ -1,0 +1,51 @@
+{
+  "scope": "Workspace",
+  "tasks": {
+    "task-jH_k9R8Awu0qFzmowUkhK": {
+      "id": "task-jH_k9R8Awu0qFzmowUkhK",
+      "description": "== Settings ==\nvolume\nkeybinds",
+      "columnId": "column-todo"
+    },
+    "U4lcxw2mBW8OR0now4RxG": {
+      "id": "U4lcxw2mBW8OR0now4RxG",
+      "description": "== InputHandler.gd ==\n> single _input(event) function\n>> sort by event type (key, mouse, click/move, etc)\n>> Signals",
+      "columnId": "column-qHaqb7wb0TasYhHmo87Cr",
+      "color": "#37130000"
+    },
+    "m-RCJrMDPy-82GUCrxYzD": {
+      "id": "m-RCJrMDPy-82GUCrxYzD",
+      "description": "== Shortcuts ==\nopen profile\nopen menu\nexit\nquicksave",
+      "columnId": "column-todo",
+      "color": "#80808000"
+    },
+    "nsCQsW3Ym9H4oPk4r4ROg": {
+      "id": "nsCQsW3Ym9H4oPk4r4ROg",
+      "description": "== Profile ==\nedit name",
+      "columnId": "column-todo",
+      "color": "#80808000"
+    }
+  },
+  "columns": [
+    {
+      "id": "column-todo",
+      "title": "To do",
+      "tasksIds": [
+        "task-jH_k9R8Awu0qFzmowUkhK",
+        "m-RCJrMDPy-82GUCrxYzD",
+        "nsCQsW3Ym9H4oPk4r4ROg"
+      ]
+    },
+    {
+      "id": "column-qHaqb7wb0TasYhHmo87Cr",
+      "title": "In progress",
+      "tasksIds": [
+        "U4lcxw2mBW8OR0now4RxG"
+      ]
+    },
+    {
+      "id": "column-done",
+      "title": "Done",
+      "tasksIds": []
+    }
+  ]
+}

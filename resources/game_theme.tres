@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bv8ucnas201py"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://bv8ucnas201py"]
 
 [ext_resource type="FontFile" uid="uid://bmqwpchqi74wh" path="res://resources/mac's minecraft/mac's Minecraft.ttf" id="1_ntlge"]
 [ext_resource type="FontFile" uid="uid://dfpexwy2g7pno" path="res://resources/mac's minecraft/mac's Minecraft Bold.ttf" id="1_oitfk"]
@@ -36,6 +36,32 @@ content_margin_right = 2.0
 content_margin_bottom = 2.0
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqkxy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ppkm"]
+bg_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edbem"]
+bg_color = Color(0.0962047, 0.0962048, 0.0962046, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsfs6"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uuf5"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kp4h"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r3bg"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq2xf"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oitfk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c6gk"]
@@ -67,6 +93,19 @@ Button/styles/focus = SubResource("StyleBoxEmpty_lyffh")
 Button/styles/hover = SubResource("StyleBoxFlat_lyffh")
 Button/styles/normal = SubResource("StyleBoxFlat_oitfk")
 Button/styles/pressed = SubResource("StyleBoxFlat_jqkxy")
+ItemList/colors/font_color = Color(0.65, 0.65, 0.65, 1)
+ItemList/colors/font_hovered_color = Color(0.65, 0.65, 0.65, 1)
+ItemList/colors/font_hovered_selected_color = Color(1, 1, 1, 1)
+ItemList/colors/font_selected_color = Color(1, 1, 1, 1)
+ItemList/colors/guide_color = Color(0.701961, 0.701961, 0.701961, 0)
+ItemList/styles/cursor = SubResource("StyleBoxEmpty_jqkxy")
+ItemList/styles/focus = SubResource("StyleBoxFlat_2ppkm")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_edbem")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_gsfs6")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_4uuf5")
+ItemList/styles/panel = SubResource("StyleBoxFlat_1kp4h")
+ItemList/styles/selected = SubResource("StyleBoxFlat_4r3bg")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_xq2xf")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_oitfk")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_5c6gk")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_kyjye")
