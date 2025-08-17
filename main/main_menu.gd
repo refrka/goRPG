@@ -46,33 +46,24 @@ func _connect_buttons() -> void:
 	%NameEntry.text_submitted.connect(_on_name_submitted)
 	%CreateGameButton.pressed.connect(func():%NameEntry.text_submitted.emit(%NameEntry.text))
 	%BackButton.pressed.connect(_main_menu)
-		
-func _create_save_row(save: ConfigFile) -> PanelContainer:
-	var row = save_row.instantiate()
-	var row_label = row.find_child("SaveName")
-	var row_button = row.find_child("DeleteButton")
-	row_button.pressed.connect(_delete_menu.bind(row, save))
-	row_label.text = save.get_value("Player", "name")
-	row.gui_input.connect(_save_row_selected.bind(row, save))
-	return row
 
-func _delete_menu(row: PanelContainer, save: ConfigFile) -> void:
-	var save_name = save.get_value("Player", "name")
+func _delete_menu(index: int, save_data: Dictionary) -> void:
+	var save_name = save_data["player"]["name"]
 	%DeleteButton.visible = true
 	%DeleteLabel.text = "Are you sure you want to delete the save '%s'?" % save_name
-	%DeleteButton.pressed.connect(_delete_save.bind(row, save))
+	%DeleteButton.pressed.connect(_delete_save.bind(index, save_data))
 	_show(%DeleteSaveMenu)
 
-func _delete_save(index: int, save: ConfigFile) -> void:
-	var save_name = save.get_value("Player", "name")
-	if !SaveHandler.validate_save(save_name):
+func _delete_save(index: int, save_data: Dictionary) -> void:
+	if !SaveHandler.validate_save(save_data["player"]["name"]):
 		Debug.log_error(Enums.ErrorKey.SAVE_MISSING)
 		return
-	if SaveHandler.delete_save(save):
+	if SaveHandler.delete_save(save_data):
 		%ItemList.remove_item(index)
 		%DeleteLabel.text = "Save deleted"
 		%DeleteButton.visible = false
-		%DeleteButton.pressed.disconnect(_delete_save)
+		if %DeleteButton.pressed.is_connected(_delete_save):
+			%DeleteButton.pressed.disconnect(_delete_save)
 
 func _load_game() -> void:
 	%LoadSaveButton.disabled = true
@@ -85,13 +76,13 @@ func _load_game() -> void:
 		%LoadGameLabel.text = "Current saves:"
 		%ItemList.clear()
 		for save in SaveHandler.save_list:
-			# var hbox = _create_save_row(save)
-			save_index[save] = %ItemList.add_item(save.get_value("Player", "name"))
+			save_index[save] = %ItemList.add_item(save["player"]["name"])
 			%ItemList.set_item_tooltip_enabled(save_index[save], false)
-		# %ItemList.item_selected.connect(_save_row_selected)
+		if !%ItemList.item_selected.is_connected(_save_row_selected):
+			%ItemList.item_selected.connect(_save_row_selected)
 
-func _load_save(save: ConfigFile) -> void:
-	Signals.GAME_save_loaded.emit(save)
+func _load_save(_save_data: Dictionary) -> void:
+	SaveHandler.load_save(_save_data)
 	visible = false
 
 func _main_menu() -> void:
@@ -116,21 +107,23 @@ func _on_name_submitted(_name: String) -> void:
 	if _name == "":
 		new_game.name_error()
 		return
-	var new_save = SaveHandler.create_save(_name)
-	if new_save == SaveHandler.active_save:
-		Signals.GAME_save_loaded.emit(new_save)
-	visible = false
+	var new_save = SaveHandler.create_new_save(_name)
+	print(new_save)
+	if new_save != {}:
+		Signals.GAME_save_created.emit()
+		SaveHandler.load_save(new_save)
+		visible = false
 	
 func _save_row_selected(index: int) -> void:
 	var selected_save = save_index.find_key(index)
-	if %LoadSaveButton.pressed.has_connections():
+	if %LoadSaveButton.pressed.is_connected(_load_save):
 		%LoadSaveButton.pressed.disconnect(_load_save)
 	%LoadSaveButton.disabled = false
-	if %DeleteSaveButton.pressed.has_connections():
-		%LoadSaveButton.pressed.disconnect(_delete_save)
+	if %DeleteSaveButton.pressed.is_connected(_delete_menu):
+		%DeleteSaveButton.pressed.disconnect(_delete_menu)
 	%DeleteSaveButton.disabled = false
 	%LoadSaveButton.pressed.connect(_load_save.bind(selected_save))
-	%DeleteSaveButton.pressed.connect(_delete_save.bind(index, selected_save))
+	%DeleteSaveButton.pressed.connect(_delete_menu.bind(index, selected_save))
 
 func _show(menu: Node) -> void:
 	visible = true

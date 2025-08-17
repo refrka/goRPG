@@ -1,8 +1,34 @@
 extends Node
 
+const ITEM_TYPE = Enums.ItemType
 const GAME_NAME:= "goRPG"
-const SAVE_COUNT_MAX = 2
+const SAVE_COUNT_MAX = 5
 const SceneKey = Enums.SceneKey
+
+var item_type_ref = {
+	ITEM_TYPE.ITEM_TYPE_A: "item_type_A",
+	ITEM_TYPE.ITEM_TYPE_B: "item_type_B",
+	ITEM_TYPE.WEAPONS: "weapons",
+}
+
+var save_template = {
+	"game": "goRPG",
+	"player": {},
+	"inventory": {
+		"item_type_A": [
+			"item_A",
+			"item_B",
+		],
+		"item_type_B": [
+			"item_C",
+			"item_D",
+		],
+		"weapons": [
+			"sword",
+		]
+		
+	}
+}
 
 var scene_ref = {
 	SceneKey.MAIN_MENU: {

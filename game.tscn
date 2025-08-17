@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcf0l46qq0jqa"]
+[gd_scene load_steps=3 format=3 uid="uid://dcf0l46qq0jqa"]
 
 [ext_resource type="Script" uid="uid://bmlxyu6wrycmv" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://dr2oqjjh5l2v1" path="res://player/player.gd" id="2_e2o6t"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_80nbo")
@@ -24,3 +25,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("2_e2o6t")

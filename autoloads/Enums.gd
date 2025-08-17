@@ -6,13 +6,16 @@ enum ErrorKey {
 	SAVE_DIR,
 	SAVE_DIR_CREATE,
 	SAVE_MISSING,
+	SAVE_WRITE_FAIL,
 	SCENE_DUPLICATE,
 	SCENE_PATH,
 	SCENE_ROOT,
 }
 
-enum InputKey {
-
+enum ItemType {
+	ITEM_TYPE_A,
+	ITEM_TYPE_B,
+	WEAPONS,
 }
 
 enum SceneKey {

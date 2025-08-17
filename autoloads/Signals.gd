@@ -6,7 +6,9 @@ signal DEBUG_print_errors # for now, at end of game.gd _ready, after GAME_starte
 
 signal GAME_quit # when quit is selected in the menu
 signal GAME_started(game: Node) # at end if game.gd _ready()
-signal GAME_save_loaded(save_file: ConfigFile) # upon successful load of a save
+signal GAME_saved # after the game is saved
+signal GAME_save_created
+signal GAME_save_loaded(save_data: Dictionary) # upon successful load of a save
 signal GAME_update_save(section: String, key: String, value: Variant) # in many places
 
 signal INPUT_mouse_left(state: bool) # when the left mouse button is pressed or released
